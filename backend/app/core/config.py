@@ -6,6 +6,8 @@ class Settings(BaseSettings):
     API_VERSION: str = "v1"
     DEBUG: bool = True
 
+    DATABASE_URL: str
+
     model_config = SettingsConfigDict(
         env_file=".env",
         extra="ignore",
