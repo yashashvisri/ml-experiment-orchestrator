@@ -2,15 +2,19 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "ML Experiment Orchestrator"
-    API_VERSION: str = "v1"
+    PROJECT_NAME: str = "AI Experiment Platform"
+    API_VERSION: str = "1.0.0"
     DEBUG: bool = True
 
     DATABASE_URL: str
 
+    SECRET_KEY: str = "CHANGE_THIS_IN_PRODUCTION"
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+
     model_config = SettingsConfigDict(
         env_file=".env",
-        extra="ignore",
+        case_sensitive=True,
     )
 
 
