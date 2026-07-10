@@ -333,7 +333,7 @@ The next milestone is implementing **Project Management**, which will become the
 
 **Yashashvi Srivastava**
 
-AI/ML Engineer | Backend Developer | MLOps Enthusiast
+AI/ML Engineer | Backend Developer | Agentic AI Enthusiast
 
 Building production-ready AI applications using Machine Learning, LLMs, Agentic AI, and MLOps best practices.
 
