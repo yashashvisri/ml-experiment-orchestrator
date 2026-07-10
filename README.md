@@ -54,9 +54,7 @@ The long-term goal is to build an AI platform comparable to a combination of:
 
 ---
 
-# 🏗️ Current Progress
-
-## ✅ Completed
+# 🏗️ Current Progress(Completed)
 
 ### Backend Foundation
 
@@ -158,6 +156,7 @@ The long-term goal is to build an AI platform comparable to a combination of:
 - FAISS
 - ChromaDB
 - Sentence Transformers
+- Agentic AI
 
 ---
 
