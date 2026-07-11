@@ -37,23 +37,6 @@ The long-term goal is to build an AI platform comparable to a combination of:
 
 ---
 
-# 🎯 Project Goals
-
-- Secure user authentication
-- Dataset management
-- Experiment orchestration
-- Automated model training
-- Hyperparameter optimization
-- MLflow experiment tracking
-- AI-generated experiment summaries
-- RAG over experiment history
-- Multi-agent AI workflows
-- Model versioning
-- PDF report generation
-- Deployment-ready architecture
-
----
-
 # 🏗️ Current Progress(Completed)
 
 ### Backend Foundation
