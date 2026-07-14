@@ -9,8 +9,8 @@ from starlette.status import HTTP_401_UNAUTHORIZED
 
 from app.core.config import settings
 from app.database.session import get_db
-from app.models.user import User
-from app.repositories.user_repository import UserRepository
+from app.users.model import User
+from app.users.repository import UserRepository
 
 oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl="/api/v1/auth/login",

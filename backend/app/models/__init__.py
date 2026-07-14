@@ -1,5 +1,5 @@
 from app.models.project import Project
-from app.models.user import User
+from app.users.model import User
 
 __all__ = [
     "User",
