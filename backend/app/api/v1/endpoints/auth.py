@@ -4,14 +4,18 @@ from sqlalchemy.orm import Session
 from app.database.session import get_db
 from app.dependencies.auth import get_current_user
 
-from app.users.model import User
-from app.users.schemas import (
+from app.models.user import User
+
+from app.schemas.user import (
     UserCreate,
     UserResponse,
     UserLogin,
     Token,
 )
-from app.users.service import UserService
+
+from app.services.user_service import UserService
+
+from app.services.user_service import UserService
 
 router = APIRouter()
 
@@ -25,10 +29,7 @@ def register(
     db: Session = Depends(get_db),
 ):
     try:
-        return UserService.register(
-            db,
-            user,
-        )
+        return UserService.register(db, user)
 
     except ValueError as e:
         raise HTTPException(
