@@ -74,12 +74,6 @@ The long-term goal is to build an AI platform comparable to a combination of:
 
 ---
 
-# 🚧 In Progress
-
-- Project Management Module
-
----
-
 # 📅 Upcoming Features
 
 - Project Dashboard
