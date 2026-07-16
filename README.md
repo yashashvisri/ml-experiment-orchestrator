@@ -244,15 +244,6 @@ Each layer has a single responsibility:
 
 ---
 
-# 🗄 Database
-
-Current Tables
-
-- users
-- alembic_version
-
----
-
 # 📚 Learning Objectives
 
 This project demonstrates:
