@@ -2,7 +2,7 @@ import uuid
 
 from sqlalchemy import DateTime, ForeignKey, String, Text
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql import func
 
 from app.database.base import Base
@@ -47,3 +47,5 @@ class Project(Base):
         server_default=func.now(),
         onupdate=func.now(),
     )
+
+    datasets = relationship("Dataset", back_populates="project", cascade="all, delete-orphan")
