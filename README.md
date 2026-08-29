@@ -79,7 +79,6 @@ The long-term goal is to build an AI platform comparable to a combination of:
 - Dataset Upload Module
 
 ---
-
 # 📅 Upcoming Features
 
 - Project Dashboard
@@ -247,15 +246,6 @@ Each layer has a single responsibility:
 | POST | `/api/v1/auth/register` | ✅ |
 | POST | `/api/v1/auth/login` | ✅ |
 | GET | `/api/v1/auth/me` | ✅ |
-
----
-
-# 🗄 Database
-
-Current Tables
-
-- users
-- alembic_version
 
 ---
 
