@@ -76,7 +76,7 @@ The long-term goal is to build an AI platform comparable to a combination of:
 
 # 🚧 In Progress
 
-- Project Management Module
+- Dataset Upload Module
 
 ---
 
@@ -285,7 +285,7 @@ This project demonstrates:
 - [x] Alembic Migrations
 - [x] User Authentication
 - [x] JWT Authorization
-- [ ] Project Management
+- [x] Project Management
 - [ ] Dataset Upload
 - [ ] ML Experiment Engine
 - [ ] MLflow Tracking
@@ -304,11 +304,11 @@ This project demonstrates:
 
 **Current Version:** `v0.2.0`
 
-**Completion:** **~30%**
+**Completion:** **~40%**
 
-The backend foundation and authentication module are complete.
+The backend foundation, authentication, and Project Management modules are complete.
 
-The next milestone is implementing **Project Management**, which will become the core entity for datasets, experiments, and ML workflows.
+The next milestone is implementing **Dataset Upload**, which will allow users to upload and manage data for their projects.
 
 ---
 
