@@ -76,7 +76,7 @@ The long-term goal is to build an AI platform comparable to a combination of:
 
 # 🚧 In Progress
 
-- Dataset Upload Module
+- ML Experiment Engine & MLflow Tracking
 
 ---
 # 📅 Upcoming Features
@@ -276,7 +276,7 @@ This project demonstrates:
 - [x] User Authentication
 - [x] JWT Authorization
 - [x] Project Management
-- [ ] Dataset Upload
+- [x] Dataset Upload
 - [ ] ML Experiment Engine
 - [ ] MLflow Tracking
 - [ ] Hyperparameter Optimization
@@ -294,11 +294,11 @@ This project demonstrates:
 
 **Current Version:** `v0.2.0`
 
-**Completion:** **~40%**
+**Completion:** **~50%**
 
-The backend foundation, authentication, and Project Management modules are complete.
+The backend foundation, authentication, Project Management, and Dataset Upload modules are complete.
 
-The next milestone is implementing **Dataset Upload**, which will allow users to upload and manage data for their projects.
+The next milestone is integrating the **ML Experiment Engine** and **MLflow Tracking**, which will allow users to define experiments, log runs, and track metrics.
 
 ---
 
