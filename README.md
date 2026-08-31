@@ -114,12 +114,11 @@ The long-term goal is to build an AI platform comparable to a combination of:
 - Passlib (bcrypt)
 - Python-JOSE (JWT)
 
-## Frontend (Upcoming)
+## Frontend
 
-- React
-- Tailwind CSS
-- Axios
-- React Router
+- Streamlit
+- Pandas
+- Requests
 
 ## Machine Learning (Upcoming)
 
@@ -283,7 +282,7 @@ This project demonstrates:
 - [ ] AI Agents
 - [ ] LangGraph Workflows
 - [ ] RAG Search
-- [ ] React Dashboard
+- [x] Streamlit Dashboard
 - [ ] Docker
 - [ ] CI/CD
 - [ ] Deployment
