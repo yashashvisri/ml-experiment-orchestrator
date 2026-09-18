@@ -24,3 +24,7 @@ if not projects:
     st.info("You need to create a Project first before creating experiments.")
     st.stop()
 
+project_map = {p['name']: p['id'] for p in projects}
+selected_project_name = st.selectbox("Select Project", options=list(project_map.keys()))
+selected_project_id = project_map[selected_project_name]
+
