@@ -19,3 +19,12 @@ if resp.status_code != 200:
     st.error("Failed to fetch projects.")
     st.stop()
 
+projects = resp.json()
+if not projects:
+    st.info("You need to create a Project first.")
+    st.stop()
+
+project_map = {p['name']: p['id'] for p in projects}
+selected_project_name = st.selectbox("Select Project", options=list(project_map.keys()))
+selected_project_id = project_map[selected_project_name]
+
