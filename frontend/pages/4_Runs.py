@@ -28,3 +28,18 @@ project_map = {p['name']: p['id'] for p in projects}
 selected_project_name = st.selectbox("Select Project", options=list(project_map.keys()))
 selected_project_id = project_map[selected_project_name]
 
+# Fetch experiments
+exp_resp = api_get(f"/projects/{selected_project_id}/experiments", token=st.session_state.token)
+if exp_resp.status_code != 200:
+    st.error("Failed to fetch experiments.")
+    st.stop()
+
+experiments = exp_resp.json()
+if not experiments:
+    st.info("You need to create an Experiment first before logging runs.")
+    st.stop()
+
+exp_map = {e['name']: e['id'] for e in experiments}
+selected_exp_name = st.selectbox("Select Experiment", options=list(exp_map.keys()))
+selected_exp_id = exp_map[selected_exp_name]
+
