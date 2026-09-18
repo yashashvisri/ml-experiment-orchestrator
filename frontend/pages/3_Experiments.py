@@ -13,3 +13,14 @@ if not is_authenticated():
 
 st.title("🧪 Experiments")
 
+# Fetch projects for dropdown
+resp = api_get("/projects/", token=st.session_state.token)
+if resp.status_code != 200:
+    st.error("Failed to fetch projects.")
+    st.stop()
+
+projects = resp.json()
+if not projects:
+    st.info("You need to create a Project first before creating experiments.")
+    st.stop()
+
