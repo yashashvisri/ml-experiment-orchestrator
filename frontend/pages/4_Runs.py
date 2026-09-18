@@ -7,3 +7,9 @@ st.set_page_config(page_title="Runs", page_icon="🏃")
 
 init_session()
 
+if not is_authenticated():
+    st.warning("Please log in from the main page to access Runs.")
+    st.stop()
+
+st.title("🏃 MLflow Runs")
+
