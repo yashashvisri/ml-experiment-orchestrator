@@ -5,3 +5,5 @@ from utils.api import api_get, api_post
 
 st.set_page_config(page_title="Experiments", page_icon="🧪")
 
+init_session()
+
