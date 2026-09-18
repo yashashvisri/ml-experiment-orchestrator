@@ -13,3 +13,9 @@ if not is_authenticated():
 
 st.title("🏃 MLflow Runs")
 
+# Fetch projects
+resp = api_get("/projects/", token=st.session_state.token)
+if resp.status_code != 200:
+    st.error("Failed to fetch projects.")
+    st.stop()
+
