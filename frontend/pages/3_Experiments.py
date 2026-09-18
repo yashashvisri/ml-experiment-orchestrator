@@ -7,3 +7,9 @@ st.set_page_config(page_title="Experiments", page_icon="🧪")
 
 init_session()
 
+if not is_authenticated():
+    st.warning("Please log in from the main page to access Experiments.")
+    st.stop()
+
+st.title("🧪 Experiments")
+
