@@ -28,3 +28,26 @@ project_map = {p['name']: p['id'] for p in projects}
 selected_project_name = st.selectbox("Select Project", options=list(project_map.keys()))
 selected_project_id = project_map[selected_project_name]
 
+st.divider()
+
+# Create Experiment
+st.subheader("Create New Experiment")
+with st.form("create_experiment_form", clear_on_submit=True):
+    e_name = st.text_input("Experiment Name (required)")
+    e_desc = st.text_area("Description (optional)")
+    
+    submit_create = st.form_submit_button("Create")
+    if submit_create:
+        if not e_name:
+            st.error("Experiment Name is required.")
+        else:
+            data = {"name": e_name, "description": e_desc or ""}
+            with st.spinner("Creating..."):
+                create_resp = api_post(f"/projects/{selected_project_id}/experiments", json=data, token=st.session_state.token)
+            
+            if create_resp.status_code == 200:
+                st.success("Experiment created successfully!")
+                st.rerun()
+            else:
+                st.error(f"Failed: {create_resp.text}")
+
