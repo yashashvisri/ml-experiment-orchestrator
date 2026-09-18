@@ -51,3 +51,25 @@ with st.form("create_experiment_form", clear_on_submit=True):
             else:
                 st.error(f"Failed: {create_resp.text}")
 
+st.divider()
+
+# List Experiments
+st.subheader("Project Experiments")
+exp_resp = api_get(f"/projects/{selected_project_id}/experiments", token=st.session_state.token)
+if exp_resp.status_code == 200:
+    experiments = exp_resp.json()
+    if not experiments:
+        st.info("No experiments found for this project.")
+    else:
+        df_data = []
+        for e in experiments:
+            df_data.append({
+                "Name": e["name"],
+                "Description": e["description"],
+                "MLflow ID": e["mlflow_experiment_id"],
+                "Created At": e["created_at"][:19],
+            })
+        st.dataframe(pd.DataFrame(df_data), use_container_width=True)
+else:
+    st.error("Failed to fetch experiments.")
+
