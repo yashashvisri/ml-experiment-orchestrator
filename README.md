@@ -276,8 +276,8 @@ This project demonstrates:
 - [x] JWT Authorization
 - [x] Project Management
 - [x] Dataset Upload
-- [ ] ML Experiment Engine
-- [ ] MLflow Tracking
+- [x] ML Experiment Engine
+- [x] MLflow Tracking
 - [ ] Hyperparameter Optimization
 - [ ] AI Agents
 - [ ] LangGraph Workflows
