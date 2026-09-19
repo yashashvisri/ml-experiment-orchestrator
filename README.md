@@ -278,7 +278,7 @@ This project demonstrates:
 - [x] Dataset Upload
 - [x] ML Experiment Engine
 - [x] MLflow Tracking
-- [ ] Hyperparameter Optimization
+- [x] Hyperparameter Optimization
 - [ ] AI Agents
 - [ ] LangGraph Workflows
 - [ ] RAG Search
