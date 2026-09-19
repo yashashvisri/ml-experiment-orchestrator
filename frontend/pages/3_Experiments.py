@@ -53,6 +53,57 @@ with st.form("create_experiment_form", clear_on_submit=True):
 
 st.divider()
 
+# Start AutoML Training
+st.subheader("Start AutoML Training")
+with st.form("train_automl_form"):
+    st.write("Select a dataset and let the engine find the best model for you!")
+    # Fetch datasets
+    ds_resp = api_get(f"/projects/{selected_project_id}/datasets", token=st.session_state.token)
+    datasets = []
+    if ds_resp.status_code == 200:
+        datasets = ds_resp.json()
+        
+    if not datasets:
+        st.warning("No datasets found. Please upload a dataset to this project first.")
+        st.form_submit_button("Start Training", disabled=True)
+    else:
+        dataset_map = {d['name']: d['id'] for d in datasets}
+        selected_ds_name = st.selectbox("Select Dataset", options=list(dataset_map.keys()))
+        target_col = st.text_input("Target Column Name", value="target")
+        model_type = st.selectbox("Model Type", ["xgboost", "lightgbm", "random_forest"])
+        n_trials = st.slider("Number of Optuna Trials", min_value=1, max_value=50, value=10)
+        
+        # Fetch experiments
+        exp_resp = api_get(f"/projects/{selected_project_id}/experiments", token=st.session_state.token)
+        experiments_for_train = []
+        if exp_resp.status_code == 200:
+            experiments_for_train = exp_resp.json()
+            
+        if not experiments_for_train:
+            st.warning("Please create an experiment first.")
+            st.form_submit_button("Start Training", disabled=True)
+        else:
+            exp_map = {e['name']: e['id'] for e in experiments_for_train}
+            selected_exp_train = st.selectbox("Log to Experiment", options=list(exp_map.keys()))
+            
+            submit_train = st.form_submit_button("Start Training")
+            if submit_train:
+                train_data = {
+                    "dataset_id": dataset_map[selected_ds_name],
+                    "target_column": target_col,
+                    "model_type": model_type,
+                    "n_trials": n_trials
+                }
+                with st.spinner("Starting training job in background..."):
+                    t_resp = api_post(f"/experiments/{exp_map[selected_exp_train]}/train", json=train_data, token=st.session_state.token)
+                
+                if t_resp.status_code == 200:
+                    st.success("Training job started in the background! Check the Runs page in a few minutes.")
+                else:
+                    st.error(f"Failed to start training: {t_resp.text}")
+
+st.divider()
+
 # List Experiments
 st.subheader("Project Experiments")
 exp_resp = api_get(f"/projects/{selected_project_id}/experiments", token=st.session_state.token)
