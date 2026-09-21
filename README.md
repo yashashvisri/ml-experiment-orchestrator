@@ -208,7 +208,7 @@ This project demonstrates:
 - [x] ML Experiment Engine
 - [x] MLflow Tracking
 - [x] Hyperparameter Optimization
-- [ ] AI Agents
+- [x] AI Agents
 - [ ] LangGraph Workflows
 - [ ] RAG Search
 - [ ] Docker
