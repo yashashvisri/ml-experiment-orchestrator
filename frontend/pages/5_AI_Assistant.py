@@ -19,3 +19,18 @@ for msg in st.session_state.chat_history:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
+if prompt := st.chat_input("Ask something (e.g. 'What projects do I have?'):"):
+    # Append user message
+    st.session_state.chat_history.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.markdown(prompt)
+        
+    with st.chat_message("assistant"):
+        with st.spinner("Thinking..."):
+            resp = api_post("/assistant/chat", json={"message": prompt}, token=st.session_state.token)
+            if resp.status_code == 200:
+                reply = resp.json().get("reply", "No response")
+                st.markdown(reply)
+                st.session_state.chat_history.append({"role": "assistant", "content": reply})
+            else:
+                st.error("Failed to connect to AI Agent. Is OPENAI_API_KEY set?")
