@@ -1,5 +1,5 @@
 from langgraph.graph import StateGraph, END
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage
 from langgraph.prebuilt import ToolNode
 from app.agents.state import AgentState
@@ -11,7 +11,7 @@ tools = [get_user_projects, get_project_experiments, get_experiment_runs]
 
 def build_graph():
     # Model
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, api_key=settings.OPENAI_API_KEY)
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0, google_api_key=settings.GEMINI_API_KEY)
     llm_with_tools = llm.bind_tools(tools)
     
     # Tool Node

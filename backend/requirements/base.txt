@@ -31,5 +31,5 @@ optuna>=3.4.0
 
 # AI Agents
 langchain>=0.1.0
-langchain-openai>=0.0.8
+langchain-google-genai>=1.0.0
 langgraph>=0.0.26

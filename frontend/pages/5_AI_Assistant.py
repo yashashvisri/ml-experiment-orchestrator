@@ -10,7 +10,7 @@ if not is_authenticated():
     st.stop()
 
 st.title("🤖 AI Experiment Assistant")
-st.caption("Ask me about your projects, experiments, or MLflow runs! (Requires OPENAI_API_KEY in backend .env)")
+st.caption("Ask me about your projects, experiments, or MLflow runs! (Requires GEMINI_API_KEY in backend .env)")
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
@@ -33,4 +33,4 @@ if prompt := st.chat_input("Ask something (e.g. 'What projects do I have?'):"):
                 st.markdown(reply)
                 st.session_state.chat_history.append({"role": "assistant", "content": reply})
             else:
-                st.error("Failed to connect to AI Agent. Is OPENAI_API_KEY set?")
+                st.error("Failed to connect to AI Agent. Is GEMINI_API_KEY set?")
