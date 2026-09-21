@@ -209,7 +209,7 @@ This project demonstrates:
 - [x] MLflow Tracking
 - [x] Hyperparameter Optimization
 - [x] AI Agents
-- [ ] LangGraph Workflows
+- [x] LangGraph Workflows
 - [ ] RAG Search
 - [ ] Docker
 - [ ] CI/CD
