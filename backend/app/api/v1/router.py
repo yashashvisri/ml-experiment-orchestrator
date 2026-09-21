@@ -5,6 +5,7 @@ from app.api.v1.endpoints import projects
 from app.api.v1.endpoints import datasets
 from app.api.v1.endpoints import experiments
 from app.api.v1.endpoints import runs
+from app.api.v1.endpoints import assistant
 
 api_router = APIRouter()
 
@@ -36,4 +37,10 @@ api_router.include_router(
     runs.router,
     prefix="/experiments",
     tags=["Runs"],
+)
+
+api_router.include_router(
+    assistant.router,
+    prefix="/assistant",
+    tags=["AI Assistant"],
 )
