@@ -47,3 +47,10 @@ def get_experiment_runs(experiment_id: str) -> str:
         return json.dumps(res)
     finally:
         db.close()
+
+from app.rag.retriever import retrieve_knowledge
+
+@tool
+def search_knowledge_base(query: str, project_id: str) -> str:
+    """Useful to search through PDF documents, reports, and logs uploaded to the project's knowledge base to answer questions."""
+    return retrieve_knowledge(query, project_id)

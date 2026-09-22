@@ -3,11 +3,11 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage
 from langgraph.prebuilt import ToolNode
 from app.agents.state import AgentState
-from app.agents.tools import get_user_projects, get_project_experiments, get_experiment_runs
+from app.agents.tools import get_user_projects, get_project_experiments, get_experiment_runs, search_knowledge_base
 from app.core.config import settings
 
 # Define tools
-tools = [get_user_projects, get_project_experiments, get_experiment_runs]
+tools = [get_user_projects, get_project_experiments, get_experiment_runs, search_knowledge_base]
 
 def build_graph():
     # Model
