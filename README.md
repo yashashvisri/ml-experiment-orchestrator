@@ -210,7 +210,7 @@ This project demonstrates:
 - [x] Hyperparameter Optimization
 - [x] AI Agents
 - [x] LangGraph Workflows
-- [ ] RAG Search
+- [x] RAG Search
 - [ ] Docker
 - [ ] CI/CD
 - [ ] Deployment
