@@ -6,6 +6,7 @@ from app.api.v1.endpoints import datasets
 from app.api.v1.endpoints import experiments
 from app.api.v1.endpoints import runs
 from app.api.v1.endpoints import assistant
+from app.api.v1.endpoints import documents
 
 api_router = APIRouter()
 
@@ -43,4 +44,10 @@ api_router.include_router(
     assistant.router,
     prefix="/assistant",
     tags=["AI Assistant"],
+)
+
+api_router.include_router(
+    documents.router,
+    prefix="/projects",
+    tags=["Knowledge Base"],
 )
