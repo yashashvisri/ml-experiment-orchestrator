@@ -217,7 +217,7 @@ This project demonstrates:
 - [x] AI Agents
 - [x] LangGraph Workflows
 - [x] RAG Search
-- [ ] Docker
+- [x] Docker
 - [ ] CI/CD
 - [ ] Deployment
 
