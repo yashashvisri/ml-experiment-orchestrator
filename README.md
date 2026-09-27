@@ -11,6 +11,12 @@
 ![JWT](https://img.shields.io/badge/JWT-Authentication-success)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+
+
+## 🐳 Quickstart with Docker
+`ash
+docker-compose up --build
+`
 ---
 
 # 📖 Overview
