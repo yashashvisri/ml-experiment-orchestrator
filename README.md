@@ -222,7 +222,7 @@ This project demonstrates:
 - [x] LangGraph Workflows
 - [x] RAG Search
 - [x] Docker
-- [ ] CI/CD
+- [x] CI/CD
 - [ ] Deployment
 
 ---
