@@ -112,6 +112,10 @@ The long-term goal is to build an AI platform comparable to a combination of:
 - Optuna (Hyperparameter Tuning)
 - MLflow (Experiment Tracking)
 
+## CI/CD Pipeline
+- GitHub Actions
+- Pytest
+
 ## AI Stack (Upcoming)
 - OpenAI / Gemini
 - LangChain & LangGraph
