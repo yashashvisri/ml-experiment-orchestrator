@@ -1,4 +1,4 @@
-# 🚀 AI Experiment Platform (ML Experiment Orchestrator)
+# 🚀 ML Experiment Orchestrator
 
 > A production-ready AI-powered ML Experiment Management Platform built with **FastAPI, Streamlit, PostgreSQL, MLflow, LLMs, RAG, and Agentic AI**.
 
