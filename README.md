@@ -223,7 +223,7 @@ This project demonstrates:
 - [x] RAG Search
 - [x] Docker
 - [x] CI/CD
-- [ ] Deployment
+- [x] Deployment
 
 ---
 
