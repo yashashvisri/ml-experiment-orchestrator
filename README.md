@@ -127,8 +127,10 @@ ml-experiment-orchestrator/
 │   │   ├── core/         # Config & Security
 │   │   ├── database/     # DB Sessions & Base
 │   │   ├── dependencies/ # Auth & DI
+│   │   ├── agents/       # LangGraph Workflows & DB Tools
 │   │   ├── ml/           # AutoML Pipeline, Optuna Tuner, Data Loader
 │   │   ├── models/       # SQLAlchemy Models
+│   │   ├── rag/          # Semantic Search, FAISS, PyPDF
 │   │   ├── repositories/ # Data Access Layer
 │   │   ├── schemas/      # Pydantic Validation
 │   │   ├── services/     # Business Logic
@@ -138,7 +140,7 @@ ml-experiment-orchestrator/
 │
 └── frontend/
     ├── app.py            # Streamlit Entrypoint & Auth UI
-    ├── pages/            # Projects, Datasets, Experiments, Runs
+    ├── pages/            # Projects, Datasets, Experiments, Runs, AI Assistant, Knowledge Base
     └── utils/            # API wrappers and Session management
 ```
 
