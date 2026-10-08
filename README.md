@@ -106,12 +106,12 @@ The long-term goal is to build an AI platform comparable to a combination of:
 - GitHub Actions
 - Pytest
 
-## AI Stack (Upcoming)
-- OpenAI / Gemini
+## AI & Agents Stack
+- Google Gemini (gemini-1.5-flash)
 - LangChain & LangGraph
-- FAISS / ChromaDB
-- Sentence Transformers
-- Agentic AI
+- FAISS Vector Database
+- PyPDF Document Parsing
+- Custom Agentic Tooling
 
 ---
 
