@@ -71,18 +71,12 @@ The long-term goal is to build an AI platform comparable to a combination of:
 ---
 
 
-# 📅 Upcoming Features
+# 📅 Future Enhancements
 
-- Model Comparison & Registry
-- Artifact Storage (S3 / Local mapping)
-- AI Experiment Assistant
-- LangChain Integration
-- LangGraph Agents
-- RAG Search (Vector DB integration)
-- PDF Report Generation
-- **Docker Support & Containerization (Implemented)**
-- CI/CD Pipelines
-- Cloud Deployment
+- Deep Learning Model Support (PyTorch/TensorFlow)
+- Multi-Tenant Cloud Architecture
+- Advanced Artifact Storage (S3 / GCS mapping)
+- Webhooks & External Triggers
 
 ---
 
