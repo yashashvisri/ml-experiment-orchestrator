@@ -70,11 +70,7 @@ The long-term goal is to build an AI platform comparable to a combination of:
 
 ---
 
-# 🚧 In Progress
 
-- **AI Agents & LangGraph Workflows:** Orchestrating intelligent agents to analyze datasets, explain MLflow metrics, and assist researchers.
-
----
 # 📅 Upcoming Features
 
 - Model Comparison & Registry
@@ -235,7 +231,7 @@ This project demonstrates:
 
 The Backend Foundation, Authentication, Project Management, Dataset Uploads, **Machine Learning Engine**, **Hyperparameter Optimization**, **MLflow tracking**, and **Streamlit Dashboard** are fully integrated and complete. 
 
-The next milestone is integrating the **AI Agents & LangGraph Workflows**, which will introduce intelligent LLM-driven research assistants to interpret ML metrics and guide dataset analysis.
+The ML Engine, AutoML, Streamlit UI, LangGraph AI Agents, RAG Search, Docker Containerization, CI/CD, and Deployment are 100% complete and deployed.
 
 ---
 
