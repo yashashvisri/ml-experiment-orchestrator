@@ -1,8 +1,11 @@
 import streamlit as st
 from utils.auth import init_session, is_authenticated
 from utils.api import api_post
+from utils.styles import apply_custom_styles
 
-st.set_page_config(page_title="AI Assistant", page_icon="🤖")
+st.set_page_config(page_title="AI Assistant", page_icon="🤖", layout="wide")
+
+apply_custom_styles()
 init_session()
 
 if not is_authenticated():
@@ -10,7 +13,7 @@ if not is_authenticated():
     st.stop()
 
 st.title("🤖 AI Experiment Assistant")
-st.caption("Ask me about your projects, experiments, or MLflow runs! (Requires GEMINI_API_KEY in backend .env)")
+st.caption("Ask me about your projects, experiments, or MLflow runs! (Powered by Google Gemini 1.5 Flash via LangGraph)")
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
@@ -20,7 +23,6 @@ for msg in st.session_state.chat_history:
         st.markdown(msg["content"])
 
 if prompt := st.chat_input("Ask something (e.g. 'What projects do I have?'):"):
-    # Append user message
     st.session_state.chat_history.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
