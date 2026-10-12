@@ -13,6 +13,14 @@
 
 
 
+
+## 🎨 UI Design System & Dashboard
+The frontend is built with a modern Streamlit glassmorphism interface:
+- **Theme Tokens**: Indigo primary accent (`#6366f1`), Slate dark background (`#0b0f19`), and elevated card surfaces (`#161f30`).
+- **Telemetry Cards**: Live KPI metrics for Active Projects, MLflow Tracking status, and Optuna AutoML runs.
+- **Typography**: Google Fonts (*Plus Jakarta Sans* and *JetBrains Mono*).
+- **Reusable Components**: [`frontend/utils/ui_components.py`](frontend/utils/ui_components.py) and [`frontend/utils/styles.py`](frontend/utils/styles.py).
+
 ## 🐳 Quickstart with Docker
 `ash
 docker-compose up --build
