@@ -24,3 +24,48 @@ if is_authenticated():
         if st.button("🚪 Logout", use_container_width=True):
             logout()
             st.rerun()
+
+    c1, c2, c3, c4 = st.columns(4)
+    projects_count = 0
+    p_resp = api_get("/projects/", token=st.session_state.token)
+    if p_resp.status_code == 200:
+        projects_count = len(p_resp.json())
+
+    with c1:
+        st.markdown(f"""
+        <div class="metric-card">
+            <div class="metric-card-label">Active Projects</div>
+            <div class="metric-card-val">{projects_count}</div>
+            <div class="metric-badge">📁 PostgreSQL</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c2:
+        st.markdown("""
+        <div class="metric-card">
+            <div class="metric-card-label">MLflow Tracking</div>
+            <div class="metric-card-val">Live</div>
+            <div class="metric-badge">🧪 SQLite / Local</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c3:
+        st.markdown("""
+        <div class="metric-card">
+            <div class="metric-card-label">AutoML Engine</div>
+            <div class="metric-card-val">Optuna</div>
+            <div class="metric-badge">⚡ XGB / LGBM / RF</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c4:
+        st.markdown("""
+        <div class="metric-card">
+            <div class="metric-card-label">AI Agent Brain</div>
+            <div class="metric-card-val">Gemini 1.5</div>
+            <div class="metric-badge">🤖 LangGraph + RAG</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.write("")
+    st.divider()
