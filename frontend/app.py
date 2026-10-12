@@ -111,3 +111,49 @@ if is_authenticated():
             """, unsafe_allow_html=True)
             if st.button("Talk to AI Assistant →", key="btn_agent", use_container_width=True):
                 st.switch_page("pages/5_AI_Assistant.py")
+
+else:
+    col_center1, col_center2, col_center3 = st.columns([1, 2, 1])
+    with col_center2:
+        st.markdown('<div style="text-align: center; margin-top: 2rem;">', unsafe_allow_html=True)
+        st.markdown('<h1 class="hero-title" style="text-align: center;">ML Experiment Orchestrator</h1>', unsafe_allow_html=True)
+        st.markdown('<p class="hero-subtitle" style="text-align: center;">Sign in to your production AI experiment workspace</p>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        tab1, tab2 = st.tabs(["🔐 Sign In", "✨ Create Account"])
+        
+        with tab1:
+            with st.form("login_form"):
+                email = st.text_input("Work Email", placeholder="researcher@lab.ai")
+                password = st.text_input("Password", type="password", placeholder="••••••••")
+                submit = st.form_submit_button("Sign In →", type="primary", use_container_width=True)
+                
+                if submit:
+                    if not email or not password:
+                        st.error("Please fill in both email and password.")
+                    else:
+                        with st.spinner("Authenticating..."):
+                            success, msg = login(email, password)
+                        if success:
+                            st.success("Welcome back!")
+                            st.rerun()
+                        else:
+                            st.error(msg)
+                        
+        with tab2:
+            with st.form("register_form"):
+                reg_name = st.text_input("Full Name", placeholder="Dr. Jane Doe")
+                reg_email = st.text_input("Email", placeholder="jane@lab.ai")
+                reg_password = st.text_input("Password", type="password", placeholder="Create a secure password")
+                submit_reg = st.form_submit_button("Register Account →", type="primary", use_container_width=True)
+                
+                if submit_reg:
+                    if not reg_email or not reg_password:
+                        st.error("Email and password are required.")
+                    else:
+                        with st.spinner("Creating account..."):
+                            success, msg = register(reg_email, reg_password, reg_name)
+                        if success:
+                            st.success("Account created successfully! Please switch to the Sign In tab.")
+                        else:
+                            st.error(msg)
