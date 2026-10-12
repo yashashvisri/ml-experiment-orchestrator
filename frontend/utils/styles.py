@@ -93,5 +93,19 @@ def apply_custom_styles():
         background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
         box-shadow: 0 4px 20px rgba(99, 102, 241, 0.5) !important;
     }
+
+    .stTextInput > div > div > input,
+    .stTextArea > div > div > textarea,
+    .stSelectbox > div > div {
+        border-radius: 10px !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background-color: rgba(15, 23, 42, 0.6) !important;
+        color: #f8fafc !important;
+    }
+    .stTextInput > div > div > input:focus,
+    .stTextArea > div > div > textarea:focus {
+        border-color: #6366f1 !important;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25) !important;
+    }
     </style>
     """, unsafe_allow_html=True)
