@@ -69,3 +69,45 @@ if is_authenticated():
 
     st.write("")
     st.divider()
+
+    st.subheader("⚡ Quick Launch Hub")
+    q1, q2, q3 = st.columns(3)
+
+    with q1:
+        with st.container():
+            st.markdown("""
+            <div class="metric-card" style="margin-bottom: 0.75rem;">
+                <h4 style="margin: 0; color: #f8fafc;">📁 Projects & Datasets</h4>
+                <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 0.25rem;">
+                    Manage experiment workspaces, upload CSV training data, and review dataset schemas.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("Open Projects →", key="btn_proj", use_container_width=True):
+                st.switch_page("pages/1_Projects.py")
+
+    with q2:
+        with st.container():
+            st.markdown("""
+            <div class="metric-card" style="margin-bottom: 0.75rem;">
+                <h4 style="margin: 0; color: #f8fafc;">🧪 AutoML & Experiments</h4>
+                <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 0.25rem;">
+                    Trigger Optuna hyperparameter optimization runs, view metrics, and inspect MLflow logs.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("Launch AutoML Studio →", key="btn_exp", use_container_width=True):
+                st.switch_page("pages/3_Experiments.py")
+
+    with q3:
+        with st.container():
+            st.markdown("""
+            <div class="metric-card" style="margin-bottom: 0.75rem;">
+                <h4 style="margin: 0; color: #f8fafc;">🤖 AI Assistant & Knowledge Base</h4>
+                <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 0.25rem;">
+                    Chat with your LangGraph AI Data Scientist and index PDFs via FAISS vector search.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("Talk to AI Assistant →", key="btn_agent", use_container_width=True):
+                st.switch_page("pages/5_AI_Assistant.py")
