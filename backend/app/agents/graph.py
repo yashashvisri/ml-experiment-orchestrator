@@ -10,8 +10,9 @@ from app.core.config import settings
 tools = [get_user_projects, get_project_experiments, get_experiment_runs, search_knowledge_base]
 
 def build_graph():
+    api_key = settings.GEMINI_API_KEY if settings.GEMINI_API_KEY else "AIzaSy_PLACEHOLDER_KEY"
     # Model
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0, google_api_key=settings.GEMINI_API_KEY)
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0, google_api_key=api_key)
     llm_with_tools = llm.bind_tools(tools)
     
     # Tool Node

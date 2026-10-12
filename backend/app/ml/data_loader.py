@@ -1,6 +1,14 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
+import numpy as np
 from typing import Tuple, Any
+
+def train_test_split_custom(X: pd.DataFrame, y: pd.Series, test_size: float = 0.2, random_state: int = 42):
+    np.random.seed(random_state)
+    shuffled_idx = np.random.permutation(len(X))
+    split_idx = int(len(X) * (1 - test_size))
+    train_idx = shuffled_idx[:split_idx]
+    test_idx = shuffled_idx[split_idx:]
+    return X.iloc[train_idx], X.iloc[test_idx], y.iloc[train_idx], y.iloc[test_idx]
 
 def load_and_prep_data(filepath: str, target_col: str) -> Tuple[Any, Any, Any, Any, bool]:
     """
@@ -32,5 +40,5 @@ def load_and_prep_data(filepath: str, target_col: str) -> Tuple[Any, Any, Any, A
     # Fill remaining NaNs with column means (very basic imputation)
     X = X.fillna(X.mean())
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split_custom(X, y, test_size=0.2, random_state=42)
     return X_train, X_test, y_train, y_test, is_classification
