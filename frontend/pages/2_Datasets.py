@@ -2,9 +2,11 @@ import streamlit as st
 import pandas as pd
 from utils.auth import init_session, is_authenticated
 from utils.api import api_get, api_post_file, api_delete
+from utils.styles import apply_custom_styles
 
-st.set_page_config(page_title="Datasets", page_icon="📊")
+st.set_page_config(page_title="Datasets", page_icon="📊", layout="wide")
 
+apply_custom_styles()
 init_session()
 
 if not is_authenticated():
@@ -13,7 +15,6 @@ if not is_authenticated():
 
 st.title("📊 Datasets")
 
-# Fetch projects for dropdown
 resp = api_get("/projects/", token=st.session_state.token)
 if resp.status_code != 200:
     st.error("Failed to fetch projects.")
@@ -30,14 +31,13 @@ selected_project_id = project_map[selected_project_name]
 
 st.divider()
 
-# Upload Dataset
 st.subheader("Upload New Dataset")
 with st.form("upload_dataset_form", clear_on_submit=True):
     d_name = st.text_input("Dataset Name (required)")
     d_desc = st.text_area("Description (optional)")
     uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
     
-    submit_upload = st.form_submit_button("Upload")
+    submit_upload = st.form_submit_button("Upload Dataset →", type="primary")
     if submit_upload:
         if not d_name or not uploaded_file:
             st.error("Dataset Name and File are required.")
@@ -45,7 +45,7 @@ with st.form("upload_dataset_form", clear_on_submit=True):
             files = {"file": (uploaded_file.name, uploaded_file, "text/csv")}
             data = {"name": d_name, "description": d_desc or ""}
             
-            with st.spinner("Uploading..."):
+            with st.spinner("Uploading dataset..."):
                 up_resp = api_post_file(f"/projects/{selected_project_id}/datasets", files=files, data=data, token=st.session_state.token)
             
             if up_resp.status_code == 200:
@@ -56,7 +56,6 @@ with st.form("upload_dataset_form", clear_on_submit=True):
 
 st.divider()
 
-# List Datasets
 st.subheader("Project Datasets")
 ds_resp = api_get(f"/projects/{selected_project_id}/datasets", token=st.session_state.token)
 if ds_resp.status_code == 200:
@@ -64,7 +63,6 @@ if ds_resp.status_code == 200:
     if not datasets:
         st.info("No datasets found for this project.")
     else:
-        # Prepare dataframe for nice display
         df_data = []
         for d in datasets:
             df_data.append({
@@ -77,15 +75,14 @@ if ds_resp.status_code == 200:
         
         st.dataframe(pd.DataFrame(df_data), use_container_width=True)
         
-        # Deletion controls
         st.write("---")
         st.write("**Manage Datasets**")
         del_col1, del_col2 = st.columns([3, 1])
         with del_col1:
             dataset_to_delete = st.selectbox("Select dataset to delete", options=[d["name"] for d in datasets])
         with del_col2:
-            st.write("") # Spacer
-            st.write("") # Spacer
+            st.write("")
+            st.write("")
             if st.button("Delete Selected Dataset", type="primary"):
                 del_id = next(d["id"] for d in datasets if d["name"] == dataset_to_delete)
                 del_resp = api_delete(f"/projects/{selected_project_id}/datasets/{del_id}", token=st.session_state.token)
