@@ -36,6 +36,13 @@ def apply_custom_styles():
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 14px;
         padding: 1.25rem;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+    }
+    .metric-card:hover {
+        border-color: rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px -4px rgba(99, 102, 241, 0.2);
     }
 
     .metric-card-label {
@@ -51,6 +58,17 @@ def apply_custom_styles():
         font-weight: 700;
         color: #f8fafc;
         margin-top: 0.25rem;
+    }
+
+    .metric-badge {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border-radius: 9999px;
+        background: rgba(99, 102, 241, 0.15);
+        color: #a5b4fc;
+        border: 1px solid rgba(99, 102, 241, 0.3);
     }
     </style>
     """, unsafe_allow_html=True)
