@@ -107,5 +107,20 @@ def apply_custom_styles():
         border-color: #6366f1 !important;
         box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25) !important;
     }
+
+    section[data-testid="stSidebar"] {
+        background-color: #080c14 !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    hr {
+        border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    div[data-testid="stDataFrame"] {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
     </style>
     """, unsafe_allow_html=True)
