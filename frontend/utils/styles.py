@@ -70,5 +70,28 @@ def apply_custom_styles():
         color: #a5b4fc;
         border: 1px solid rgba(99, 102, 241, 0.3);
     }
+
+    .stButton > button {
+        border-radius: 10px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .stButton > button:hover {
+        border-color: #6366f1;
+        box-shadow: 0 0 15px rgba(99, 102, 241, 0.35);
+        transform: translateY(-1px);
+    }
+
+    .stButton > button[kind="primary"] {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+        border: none !important;
+        color: #ffffff !important;
+    }
+    .stButton > button[kind="primary"]:hover {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.5) !important;
+    }
     </style>
     """, unsafe_allow_html=True)
