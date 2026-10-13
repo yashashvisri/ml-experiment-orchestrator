@@ -42,3 +42,13 @@ selected_exp_label = st.selectbox("Filter by Experiment (Optional)", options=lis
 selected_exp_id = exp_options[selected_exp_label]
 
 st.divider()
+
+col_btn, col_info = st.columns([2, 5])
+with col_btn:
+    generate_btn = st.button("🚀 Generate AI Experiment Report", type="primary", use_container_width=True)
+
+with col_info:
+    st.caption("AI analyzes training telemetry, hyperparameters, and MLflow loss curves to synthesize executive takeaways.")
+
+if "report_data" not in st.session_state:
+    st.session_state.report_data = None
