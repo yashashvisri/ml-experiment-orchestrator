@@ -109,3 +109,40 @@ if st.session_state.report_data:
         </div>
         """, unsafe_allow_html=True)
     st.write("")
+
+    st.divider()
+    
+    col_dl1, col_dl2 = st.columns([1, 1])
+    with col_dl1:
+        st.download_button(
+            label="📥 Download Markdown Report (.md)",
+            data=rep.get("markdown_content", ""),
+            file_name=f"report_{selected_project_name.lower().replace(' ', '_')}.md",
+            mime="text/markdown",
+            use_container_width=True
+        )
+
+    with col_dl2:
+        # Fetch PDF binary directly
+        pdf_url = f"http://localhost:8000/api/v1/reports/{selected_project_id}/pdf"
+        if selected_exp_id:
+            pdf_url += f"?experiment_id={selected_exp_id}"
+        
+        headers = {"Authorization": f"Bearer {st.session_state.token}"}
+        pdf_resp = requests.get(pdf_url, headers=headers)
+        if pdf_resp.status_code == 200:
+            st.download_button(
+                label="📄 Download Executive PDF Report (.pdf)",
+                data=pdf_resp.content,
+                file_name=f"report_{selected_project_name.lower().replace(' ', '_')}.pdf",
+                mime="application/pdf",
+                type="primary",
+                use_container_width=True
+            )
+        else:
+            st.button("PDF Generator Error", disabled=True, use_container_width=True)
+
+    st.write("")
+    st.subheader("📑 Report Document Preview")
+    with st.container():
+        st.markdown(rep.get("markdown_content", ""))
