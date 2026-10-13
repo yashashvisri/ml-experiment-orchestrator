@@ -71,7 +71,7 @@ if is_authenticated():
     st.divider()
 
     st.subheader("⚡ Quick Launch Hub")
-    q1, q2, q3 = st.columns(3)
+    q1, q2, q3, q4 = st.columns(4)
 
     with q1:
         with st.container():
@@ -111,6 +111,19 @@ if is_authenticated():
             """, unsafe_allow_html=True)
             if st.button("Talk to AI Assistant →", key="btn_agent", use_container_width=True):
                 st.switch_page("pages/5_AI_Assistant.py")
+
+    with q4:
+        with st.container():
+            st.markdown("""
+            <div class="metric-card" style="margin-bottom: 0.75rem;">
+                <h4 style="margin: 0; color: #f8fafc;">📑 Automated Reports</h4>
+                <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 0.25rem;">
+                    Export executive experiment briefs and performance audits in PDF or Markdown format.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("Generate Reports →", key="btn_reports", use_container_width=True):
+                st.switch_page("pages/7_Reports.py")
 
 else:
     col_center1, col_center2, col_center3 = st.columns([1, 2, 1])
