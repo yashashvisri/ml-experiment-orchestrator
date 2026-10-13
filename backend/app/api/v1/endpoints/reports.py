@@ -35,3 +35,24 @@ def get_report_summary(
         best_metric=best.get("metrics") if best else None,
         markdown_content=markdown_text
     )
+
+@router.get("/{project_id}/pdf")
+def download_pdf_report(
+    project_id: str,
+    experiment_id: str | None = Query(None),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    try:
+        p_uuid = uuid.UUID(project_id)
+        e_uuid = uuid.UUID(experiment_id) if experiment_id else None
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid UUID format")
+
+    pdf_bytes = ReportService.export_pdf(db, p_uuid, e_uuid, current_user)
+    filename = f"report_{project_id[:8]}.pdf"
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f"attachment; filename={filename}"}
+    )
