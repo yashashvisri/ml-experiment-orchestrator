@@ -54,3 +54,19 @@ from app.rag.retriever import retrieve_knowledge
 def search_knowledge_base(query: str, project_id: str) -> str:
     """Useful to search through PDF documents, reports, and logs uploaded to the project's knowledge base to answer questions."""
     return retrieve_knowledge(query, project_id)
+
+from app.reporting.metrics_collector import collect_experiment_metrics
+from app.reporting.markdown_generator import generate_markdown_report
+import uuid
+
+@tool
+def generate_experiment_report(project_id: str) -> str:
+    """Useful to automatically summarize and compile a full ML research and performance report for a project."""
+    db = _get_db()
+    try:
+        data = collect_experiment_metrics(db, uuid.UUID(project_id))
+        return generate_markdown_report(data)
+    except Exception as e:
+        return f"Error compiling report: {str(e)}"
+    finally:
+        db.close()
