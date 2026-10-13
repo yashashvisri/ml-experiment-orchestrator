@@ -52,3 +52,60 @@ with col_info:
 
 if "report_data" not in st.session_state:
     st.session_state.report_data = None
+
+if generate_btn:
+    params = {}
+    if selected_exp_id:
+        params["experiment_id"] = selected_exp_id
+
+    with st.spinner("Analyzing runs and compiling AI report..."):
+        r_resp = api_get(f"/reports/{selected_project_id}/summary", token=st.session_state.token, params=params)
+    
+    if r_resp.status_code == 200:
+        st.session_state.report_data = r_resp.json()
+        st.success("Report generated successfully!")
+    else:
+        st.error(f"Failed to generate report: {r_resp.text}")
+
+if st.session_state.report_data:
+    rep = st.session_state.report_data
+    
+    st.subheader("Overview KPI Snapshot")
+    k1, k2, k3, k4 = st.columns(4)
+    with k1:
+        st.markdown(f"""
+        <div class="metric-card">
+            <div class="metric-card-label">Project Workspace</div>
+            <div class="metric-card-val" style="font-size: 1.25rem;">{rep.get('project_name')}</div>
+            <div class="metric-badge">📁 Active</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with k2:
+        st.markdown(f"""
+        <div class="metric-card">
+            <div class="metric-card-label">Total Evaluated Runs</div>
+            <div class="metric-card-val">{rep.get('total_runs', 0)}</div>
+            <div class="metric-badge">🧪 MLflow</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with k3:
+        champion = rep.get('best_model_name') or 'N/A'
+        st.markdown(f"""
+        <div class="metric-card">
+            <div class="metric-card-label">Top Champion Model</div>
+            <div class="metric-card-val" style="font-size: 1.15rem;">{champion[:18]}</div>
+            <div class="metric-badge">🏆 Best Performer</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with k4:
+        best_metrics = rep.get('best_metric') or {}
+        acc = best_metrics.get('accuracy')
+        acc_str = f"{acc * 100:.2f}%" if isinstance(acc, (int, float)) else "N/A"
+        st.markdown(f"""
+        <div class="metric-card">
+            <div class="metric-card-label">Validation Accuracy</div>
+            <div class="metric-card-val">{acc_str}</div>
+            <div class="metric-badge">⚡ Optuna Tuned</div>
+        </div>
+        """, unsafe_allow_html=True)
+    st.write("")
