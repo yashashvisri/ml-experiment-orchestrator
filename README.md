@@ -139,6 +139,7 @@ ml-experiment-orchestrator/
 │   │   ├── ml/           # AutoML Pipeline, Optuna Tuner, Data Loader
 │   │   ├── models/       # SQLAlchemy Models
 │   │   ├── rag/          # Semantic Search, FAISS, PyPDF
+│   │   ├── reporting/    # PDF & Markdown Report Generators
 │   │   ├── repositories/ # Data Access Layer
 │   │   ├── schemas/      # Pydantic Validation
 │   │   ├── services/     # Business Logic
@@ -148,7 +149,7 @@ ml-experiment-orchestrator/
 │
 └── frontend/
     ├── app.py            # Streamlit Entrypoint & Auth UI
-    ├── pages/            # Projects, Datasets, Experiments, Runs, AI Assistant, Knowledge Base
+    ├── pages/            # Projects, Datasets, Experiments, Runs, AI Assistant, Knowledge Base, Reports
     └── utils/            # API wrappers and Session management
 ```
 
@@ -189,6 +190,8 @@ Each layer has a single responsibility:
 | CRUD | `/api/v1/projects/{id}/experiments/*` | ✅ |
 | POST | `/api/v1/experiments/{id}/runs` | ✅ |
 | POST | `/api/v1/experiments/{id}/train` | ✅ (AutoML) |
+| GET | `/api/v1/reports/{project_id}/summary` | ✅ (Markdown Report) |
+| GET | `/api/v1/reports/{project_id}/pdf` | ✅ (Executive PDF) |
 
 ---
 
@@ -224,6 +227,7 @@ This project demonstrates:
 - [x] Docker
 - [x] CI/CD
 - [x] Deployment
+- [x] Automated AI Report Generation (PDF & Markdown)
 
 ---
 
