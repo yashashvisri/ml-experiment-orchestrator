@@ -44,3 +44,64 @@ selected_exp_label = st.selectbox("Filter Experiment", options=list(exp_options.
 selected_exp_id = exp_options[selected_exp_label]
 
 st.divider()
+
+# Fetch Comparison Data
+params = {}
+if selected_exp_id:
+    params["experiment_id"] = selected_exp_id
+
+comp_resp = api_get(f"/comparison/{selected_project_id}", token=st.session_state.token, params=params)
+if comp_resp.status_code != 200:
+    st.error(f"Failed to fetch model comparison: {comp_resp.text}")
+    st.stop()
+
+data = comp_resp.json()
+runs = data.get("runs", [])
+
+if not runs:
+    st.info("No runs found for this workspace. Train models via AutoML or log MLflow runs first!")
+    st.stop()
+
+# Champion & Metrics Cards
+c1, c2, c3, c4 = st.columns(4)
+with c1:
+    st.markdown(f"""
+    <div class="metric-card">
+        <div class="metric-card-label">Total Models</div>
+        <div class="metric-card-val">{len(runs)}</div>
+        <div class="metric-badge">🧪 Evaluated</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+champion_metric = data.get("champion_metric")
+champ_str = f"{champion_metric * 100:.2f}%" if champion_metric is not None else "N/A"
+with c2:
+    st.markdown(f"""
+    <div class="metric-card">
+        <div class="metric-card-label">Top Benchmark Score</div>
+        <div class="metric-card-val">{champ_str}</div>
+        <div class="metric-badge">🏆 Accuracy</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with c3:
+    num_params = len(data.get("param_keys", []))
+    st.markdown(f"""
+    <div class="metric-card">
+        <div class="metric-card-label">Tuned Parameters</div>
+        <div class="metric-card-val">{num_params}</div>
+        <div class="metric-badge">⚡ Optuna Space</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with c4:
+    st.markdown(f"""
+    <div class="metric-card">
+        <div class="metric-card-label">Frameworks</div>
+        <div class="metric-card-val">3</div>
+        <div class="metric-badge">🌲 XGB/LGBM/RF</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.write("")
+st.divider()
