@@ -70,3 +70,23 @@ def generate_experiment_report(project_id: str) -> str:
         return f"Error compiling report: {str(e)}"
     finally:
         db.close()
+
+from app.comparison.analytics import extract_experiment_comparison
+
+@tool
+def compare_experiment_models(project_id: str) -> str:
+    """Useful to compare all machine learning models, hyperparameters, and accuracy scores in a project."""
+    db = _get_db()
+    try:
+        data = extract_experiment_comparison(db, uuid.UUID(project_id))
+        runs = data.get("runs", [])
+        if not runs:
+            return "No runs available to compare."
+        summary = [f"Found {len(runs)} runs. Champion run ID: {data.get('champion_run_id')} with score {data.get('champion_metric')}"]
+        for r in runs[:5]:
+            summary.append(f"- {r['run_name']}: metrics={r['metrics']}, params={r['params']}")
+        return "\n".join(summary)
+    except Exception as e:
+        return f"Error comparing models: {str(e)}"
+    finally:
+        db.close()
