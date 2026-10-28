@@ -167,3 +167,20 @@ else:
     st.info("Log at least 2 runs to compare hyperparameters side-by-side.")
 
 st.divider()
+
+st.subheader("📋 Comprehensive Runs Leaderboard")
+table_data = []
+for r in runs:
+    row = {
+        "Run Name": r["run_name"],
+        "Experiment": r["experiment_name"],
+        "Status": r["status"],
+        "Logged At": r["logged_at"]
+    }
+    for m in data.get("metric_keys", []):
+        row[f"Metric: {m}"] = r.get("metrics", {}).get(m, None)
+    for p in data.get("param_keys", [])[:5]:
+        row[f"Param: {p}"] = r.get("params", {}).get(p, None)
+    table_data.append(row)
+
+st.dataframe(pd.DataFrame(table_data), use_container_width=True)
