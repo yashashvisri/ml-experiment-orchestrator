@@ -105,3 +105,39 @@ with c4:
 
 st.write("")
 st.divider()
+
+st.subheader("📊 Performance Metric Comparison")
+metric_keys = data.get("metric_keys", ["accuracy"])
+selected_metric = st.selectbox("Select Target Metric to Compare", options=metric_keys if metric_keys else ["accuracy"])
+
+chart_data = []
+for r in runs:
+    val = r.get("metrics", {}).get(selected_metric, 0.0)
+    chart_data.append({
+        "Run Name": r["run_name"],
+        "Experiment": r["experiment_name"],
+        selected_metric: val,
+        "Status": r["status"]
+    })
+
+df_chart = pd.DataFrame(chart_data)
+if not df_chart.empty:
+    fig_bar = px.bar(
+        df_chart,
+        x="Run Name",
+        y=selected_metric,
+        color=selected_metric,
+        color_continuous_scale="Viridis",
+        title=f"Comparison of {selected_metric.capitalize()} across Runs",
+        text_auto=".3f"
+    )
+    fig_bar.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#161f30",
+        plot_bgcolor="#0b0f19",
+        font=dict(color="#f8fafc", family="Plus Jakarta Sans"),
+        margin=dict(l=40, r=40, t=50, b=40)
+    )
+    st.plotly_chart(fig_bar, use_container_width=True)
+
+st.divider()
