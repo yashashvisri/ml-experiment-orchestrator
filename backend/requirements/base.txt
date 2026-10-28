@@ -39,3 +39,4 @@ faiss-cpu>=1.7.4
 # Reporting & Export
 reportlab>=4.0.0
 markdown>=3.5.0
+plotly>=5.18.0
