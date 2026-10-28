@@ -139,6 +139,7 @@ ml-experiment-orchestrator/
 │   │   ├── ml/           # AutoML Pipeline, Optuna Tuner, Data Loader
 │   │   ├── models/       # SQLAlchemy Models
 │   │   ├── rag/          # Semantic Search, FAISS, PyPDF
+│   │   ├── comparison/   # Multi-Run Analytics & Leaderboard
 │   │   ├── reporting/    # PDF & Markdown Report Generators
 │   │   ├── repositories/ # Data Access Layer
 │   │   ├── schemas/      # Pydantic Validation
@@ -149,7 +150,7 @@ ml-experiment-orchestrator/
 │
 └── frontend/
     ├── app.py            # Streamlit Entrypoint & Auth UI
-    ├── pages/            # Projects, Datasets, Experiments, Runs, AI Assistant, Knowledge Base, Reports
+    ├── pages/            # Projects, Datasets, Experiments, Runs, AI Assistant, Knowledge Base, Reports, Model Comparison
     └── utils/            # API wrappers and Session management
 ```
 
@@ -192,6 +193,7 @@ Each layer has a single responsibility:
 | POST | `/api/v1/experiments/{id}/train` | ✅ (AutoML) |
 | GET | `/api/v1/reports/{project_id}/summary` | ✅ (Markdown Report) |
 | GET | `/api/v1/reports/{project_id}/pdf` | ✅ (Executive PDF) |
+| GET | `/api/v1/comparison/{project_id}` | ✅ (Model Leaderboard) |
 
 ---
 
@@ -228,6 +230,7 @@ This project demonstrates:
 - [x] CI/CD
 - [x] Deployment
 - [x] Automated AI Report Generation (PDF & Markdown)
+- [x] Model Comparison & Interactive Leaderboards (Plotly)
 
 ---
 
