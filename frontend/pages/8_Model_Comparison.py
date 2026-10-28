@@ -141,3 +141,29 @@ if not df_chart.empty:
     st.plotly_chart(fig_bar, use_container_width=True)
 
 st.divider()
+
+st.subheader("🔍 Side-by-Side Model Hyperparameter Diff")
+run_names = [r["run_name"] for r in runs]
+if len(run_names) >= 2:
+    diff_col1, diff_col2 = st.columns(2)
+    with diff_col1:
+        run_a_name = st.selectbox("Model A", options=run_names, index=0)
+    with diff_col2:
+        run_b_name = st.selectbox("Model B", options=run_names, index=1 if len(run_names) > 1 else 0)
+
+    run_a = next(r for r in runs if r["run_name"] == run_a_name)
+    run_b = next(r for r in runs if r["run_name"] == run_b_name)
+
+    all_keys = sorted(list(set(run_a.get("params", {}).keys()).union(set(run_b.get("params", {}).keys()))))
+    diff_rows = []
+    for k in all_keys:
+        val_a = run_a.get("params", {}).get(k, "-")
+        val_b = run_b.get("params", {}).get(k, "-")
+        is_diff = "⚠️ Different" if str(val_a) != str(val_b) else "✅ Identical"
+        diff_rows.append({"Parameter": k, run_a_name: str(val_a), run_b_name: str(val_b), "Status": is_diff})
+
+    st.dataframe(pd.DataFrame(diff_rows), use_container_width=True)
+else:
+    st.info("Log at least 2 runs to compare hyperparameters side-by-side.")
+
+st.divider()
