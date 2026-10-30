@@ -9,6 +9,7 @@ from app.api.v1.endpoints import assistant
 from app.api.v1.endpoints import documents
 from app.api.v1.endpoints import reports
 from app.api.v1.endpoints import comparison
+from app.api.v1.endpoints import profiling
 
 api_router = APIRouter()
 
@@ -64,4 +65,10 @@ api_router.include_router(
     comparison.router,
     prefix="/comparison",
     tags=["Model Comparison"],
+)
+
+api_router.include_router(
+    profiling.router,
+    prefix="/projects",
+    tags=["Dataset Profiling"],
 )
