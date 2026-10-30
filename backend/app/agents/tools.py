@@ -90,3 +90,25 @@ def compare_experiment_models(project_id: str) -> str:
         return f"Error comparing models: {str(e)}"
     finally:
         db.close()
+
+from app.repositories.dataset_repository import DatasetRepository
+from app.profiling.stats_extractor import extract_summary_stats
+import pandas as pd
+import os
+
+@tool
+def profile_dataset(dataset_id: str) -> str:
+    """Useful to inspect, profile, and perform Exploratory Data Analysis (EDA) on a dataset CSV."""
+    db = _get_db()
+    try:
+        dataset = DatasetRepository.get_by_id(db, uuid.UUID(dataset_id))
+        if not dataset or not os.path.exists(dataset.file_path):
+            return f"Dataset {dataset_id} not found on disk."
+        df = pd.read_csv(dataset.file_path)
+        stats = extract_summary_stats(df)
+        cols = list(df.columns)[:10]
+        return f"Dataset '{dataset.name}': {stats['total_rows']} rows, {stats['total_columns']} columns. Missing cells: {stats['total_missing_cells_pct']}%. Columns: {cols}"
+    except Exception as e:
+        return f"Error profiling dataset: {str(e)}"
+    finally:
+        db.close()
