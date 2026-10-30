@@ -177,3 +177,6 @@ with tab_missing:
     else:
         st.success("🎉 Zero missing values detected across all features!")
 
+st.divider()
+st.subheader("🤖 AI Data Scientist Quality Audit & Recommendations")
+st.markdown(profile.get("ai_recommendations", "No advice generated."))
