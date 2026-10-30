@@ -101,3 +101,79 @@ with k4:
 st.write("")
 st.divider()
 
+# Tabbed EDA View
+tab_dist, tab_corr, tab_missing = st.tabs(["📊 Feature Distributions", "🔥 Correlation Heatmap", "⚠️ Missingness Audit"])
+
+with tab_dist:
+    st.subheader("Feature Level Diagnostics")
+    col_names = [c["name"] for c in columns]
+    if col_names:
+        sel_col_name = st.selectbox("Select Feature to Inspect", options=col_names)
+        sel_col = next(c for c in columns if c["name"] == sel_col_name)
+        
+        d1, d2, d3, d4 = st.columns(4)
+        d1.metric("Data Type", sel_col["dtype"])
+        d2.metric("Distinct Values", sel_col["unique_count"])
+        d3.metric("Missing Values", f"{sel_col['missing_count']} ({sel_col['missing_pct']}%)")
+        d4.metric("Skewness", str(sel_col["skewness"]) if sel_col["skewness"] is not None else "N/A")
+
+        if sel_col.get("mean") is not None:
+            st.markdown(f"**Mean:** `{sel_col['mean']}` | **Std:** `{sel_col['std']}` | **Min:** `{sel_col['min']}` | **Median:** `{sel_col['median']}` | **Max:** `{sel_col['max']}` | **Outliers (IQR):** `{sel_col.get('outlier_count', 0)}`")
+        elif sel_col.get("top_values"):
+            st.markdown("**Top Category Frequencies:**")
+            st.bar_chart(pd.DataFrame(list(sel_col["top_values"].items()), columns=["Category", "Count"]).set_index("Category"))
+
+with tab_corr:
+    st.subheader("Pearson Correlation Matrix (Numeric Features)")
+    corr_cols = corr_data.get("columns", [])
+    corr_matrix = corr_data.get("matrix", [])
+    if corr_cols and corr_matrix:
+        fig_corr = px.imshow(
+            corr_matrix,
+            x=corr_cols,
+            y=corr_cols,
+            color_continuous_scale="RdBu_r",
+            zmin=-1.0,
+            zmax=1.0,
+            text_auto=True,
+            title="Interactive Feature Correlation Heatmap"
+        )
+        fig_corr.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="#161f30",
+            plot_bgcolor="#0b0f19",
+            font=dict(color="#f8fafc", family="Plus Jakarta Sans"),
+            height=500
+        )
+        st.plotly_chart(fig_corr, use_container_width=True)
+    else:
+        st.info("Insufficient numeric columns to compute a correlation matrix.")
+
+with tab_missing:
+    st.subheader("Missing Value Frequency by Feature")
+    miss_df = pd.DataFrame([{
+        "Feature": c["name"],
+        "Missing %": c["missing_pct"],
+        "Missing Count": c["missing_count"]
+    } for c in columns if c["missing_count"] > 0])
+
+    if not miss_df.empty:
+        fig_miss = px.bar(
+            miss_df,
+            x="Feature",
+            y="Missing %",
+            color="Missing %",
+            color_continuous_scale="Reds",
+            title="Features with Missing Values (%)",
+            text_auto=".1f"
+        )
+        fig_miss.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="#161f30",
+            plot_bgcolor="#0b0f19",
+            font=dict(color="#f8fafc", family="Plus Jakarta Sans")
+        )
+        st.plotly_chart(fig_miss, use_container_width=True)
+    else:
+        st.success("🎉 Zero missing values detected across all features!")
+
