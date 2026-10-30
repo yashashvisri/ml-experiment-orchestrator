@@ -140,6 +140,7 @@ ml-experiment-orchestrator/
 │   │   ├── models/       # SQLAlchemy Models
 │   │   ├── rag/          # Semantic Search, FAISS, PyPDF
 │   │   ├── comparison/   # Multi-Run Analytics & Leaderboard
+│   │   ├── profiling/    # Automated EDA & Summary Profiler
 │   │   ├── reporting/    # PDF & Markdown Report Generators
 │   │   ├── repositories/ # Data Access Layer
 │   │   ├── schemas/      # Pydantic Validation
@@ -150,7 +151,7 @@ ml-experiment-orchestrator/
 │
 └── frontend/
     ├── app.py            # Streamlit Entrypoint & Auth UI
-    ├── pages/            # Projects, Datasets, Experiments, Runs, AI Assistant, Knowledge Base, Reports, Model Comparison
+    ├── pages/            # Projects, Datasets, Experiments, Runs, AI Assistant, Knowledge Base, Reports, Model Comparison, Dataset Profiling
     └── utils/            # API wrappers and Session management
 ```
 
@@ -194,6 +195,7 @@ Each layer has a single responsibility:
 | GET | `/api/v1/reports/{project_id}/summary` | ✅ (Markdown Report) |
 | GET | `/api/v1/reports/{project_id}/pdf` | ✅ (Executive PDF) |
 | GET | `/api/v1/comparison/{project_id}` | ✅ (Model Leaderboard) |
+| GET | `/api/v1/projects/{project_id}/datasets/{dataset_id}/profile` | ✅ (EDA Profile) |
 
 ---
 
@@ -231,6 +233,7 @@ This project demonstrates:
 - [x] Deployment
 - [x] Automated AI Report Generation (PDF & Markdown)
 - [x] Model Comparison & Interactive Leaderboards (Plotly)
+- [x] Automated Dataset Profiling & EDA Studio
 
 ---
 
