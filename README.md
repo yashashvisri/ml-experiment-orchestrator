@@ -1,31 +1,22 @@
-# 🚀 ML Experiment Orchestrator
+<p align="center">
+  <img src="docs/assets/hero_banner.svg" alt="ML Experiment Orchestrator Banner" width="100%"/>
+</p>
 
-> A production-ready AI-powered ML Experiment Management Platform built with **FastAPI, Streamlit, PostgreSQL, MLflow, LLMs, RAG, and Agentic AI**.
+<p align="center">
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.11"/></a>
+  <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/FastAPI-0.116-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/></a>
+  <a href="https://streamlit.io/"><img src="https://img.shields.io/badge/Streamlit-1.42-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit"/></a>
+  <a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/PostgreSQL-15-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/></a>
+  <a href="https://mlflow.org/"><img src="https://img.shields.io/badge/MLflow-Tracking-0194E2?style=for-the-badge&logo=mlflow&logoColor=white" alt="MLflow"/></a>
+  <a href="https://optuna.org/"><img src="https://img.shields.io/badge/Optuna-Bayesian%20Tuning-1E88E5?style=for-the-badge" alt="Optuna"/></a>
+  <a href="https://langchain-ai.github.io/langgraph/"><img src="https://img.shields.io/badge/LangGraph-Agents-7C3AED?style=for-the-badge" alt="LangGraph"/></a>
+  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/></a>
+</p>
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
-![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-red)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-red)
-![Alembic](https://img.shields.io/badge/Alembic-Migrations-orange)
-![JWT](https://img.shields.io/badge/JWT-Authentication-success)
-![License](https://img.shields.io/badge/License-MIT-green)
+> **A production-grade, full-stack Machine Learning & Agentic AI platform** integrating Bayesian AutoML, local MLflow tracking, LangGraph multi-turn research assistants, FAISS RAG, executive PDF reporting, model comparison, and automated dataset profiling.
 
-
-
-
-## 🎨 UI Design System & Dashboard
-The frontend is built with a modern Streamlit glassmorphism interface:
-- **Theme Tokens**: Indigo primary accent (`#6366f1`), Slate dark background (`#0b0f19`), and elevated card surfaces (`#161f30`).
-- **Telemetry Cards**: Live KPI metrics for Active Projects, MLflow Tracking status, and Optuna AutoML runs.
-- **Typography**: Google Fonts (*Plus Jakarta Sans* and *JetBrains Mono*).
-- **Reusable Components**: [`frontend/utils/ui_components.py`](frontend/utils/ui_components.py) and [`frontend/utils/styles.py`](frontend/utils/styles.py).
-
-## 🐳 Quickstart with Docker
-`ash
-docker-compose up --build
-`
 ---
+
 
 # 📖 Overview
 
