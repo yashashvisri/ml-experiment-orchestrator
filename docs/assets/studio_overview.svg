@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="380" rx="14" fill="url(#sbg)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="500" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">
+    Complete 9-Studio Full-Stack ML Platform
+  </text>
+  <text x="500" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">
+    Every step of the modern ML lifecycle unified in a single dark glassmorphism dashboard
+  </text>
+
+  <!-- 3x3 Grid of Studio Cards -->
+  <g transform="translate(40, 85)">
+    <!-- Card 1 -->
+    <rect x="0" y="0" width="280" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="15" y="28" font-family="sans-serif" font-size="13" font-weight="700" fill="#f8fafc">1. 📁 Project Management</text>
+    <text x="15" y="52" font-family="sans-serif" font-size="11" fill="#94a3b8">Multi-tenant project isolation &amp; metadata</text>
+
+    <!-- Card 2 -->
+    <rect x="315" y="0" width="280" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="330" y="28" font-family="sans-serif" font-size="13" font-weight="700" fill="#f8fafc">2. 📊 Dataset Hub</text>
+    <text x="330" y="52" font-family="sans-serif" font-size="11" fill="#94a3b8">CSV schema inspection &amp; validation</text>
+
+    <!-- Card 3 -->
+    <rect x="630" y="0" width="280" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="645" y="28" font-family="sans-serif" font-size="13" font-weight="700" fill="#f8fafc">3. 🧪 AutoML Studio</text>
+    <text x="645" y="52" font-family="sans-serif" font-size="11" fill="#94a3b8">Optuna Bayesian hyperparameter search</text>
+
+    <!-- Card 4 -->
+    <rect x="0" y="90" width="280" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="15" y="118" font-family="sans-serif" font-size="13" font-weight="700" fill="#f8fafc">4. 🏃 MLflow Runs</text>
+    <text x="15" y="142" font-family="sans-serif" font-size="11" fill="#94a3b8">Real-time parameters &amp; metric tracking</text>
+
+    <!-- Card 5 -->
+    <rect x="315" y="90" width="280" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="330" y="118" font-family="sans-serif" font-size="13" font-weight="700" fill="#f8fafc">5. 🤖 AI Assistant</text>
+    <text x="330" y="142" font-family="sans-serif" font-size="11" fill="#94a3b8">LangGraph agent with DB tools &amp; memory</text>
+
+    <!-- Card 6 -->
+    <rect x="630" y="90" width="280" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="645" y="118" font-family="sans-serif" font-size="13" font-weight="700" fill="#f8fafc">6. 📚 Knowledge Base</text>
+    <text x="645" y="142" font-family="sans-serif" font-size="11" fill="#94a3b8">PyPDF parsing &amp; FAISS vector search</text>
+
+    <!-- Card 7 -->
+    <rect x="0" y="180" width="280" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="15" y="208" font-family="sans-serif" font-size="13" font-weight="700" fill="#f8fafc">7. 📑 Executive Reports</text>
+    <text x="15" y="232" font-family="sans-serif" font-size="11" fill="#94a3b8">Exportable styled PDFs &amp; Markdown</text>
+
+    <!-- Card 8 -->
+    <rect x="315" y="180" width="280" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="330" y="208" font-family="sans-serif" font-size="13" font-weight="700" fill="#f8fafc">8. ⚖️ Model Comparison</text>
+    <text x="330" y="232" font-family="sans-serif" font-size="11" fill="#94a3b8">Plotly charts &amp; hyperparameter diffs</text>
+
+    <!-- Card 9 -->
+    <rect x="630" y="180" width="280" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="645" y="208" font-family="sans-serif" font-size="13" font-weight="700" fill="#f8fafc">9. 📈 Dataset Profiling (EDA)</text>
+    <text x="645" y="232" font-family="sans-serif" font-size="11" fill="#94a3b8">Correlation heatmaps &amp; AI quality audits</text>
+  </g>
+</svg>
