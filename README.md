@@ -157,6 +157,38 @@ Login ➔ Verify Password ➔ Generate JWT ➔ Protected Routes ➔ Current User
 
 ---
 
+
+---
+
+## 🏛️ System Architecture
+
+<p align="center">
+  <img src="docs/assets/architecture_diagram.svg" alt="System Architecture Diagram" width="100%"/>
+</p>
+
+The platform follows a strict **Clean Layered Architecture** with decoupled layers:
+- **API Gateway (FastAPI)**: Controller endpoints validating inputs with Pydantic and managing auth via JWT.
+- **Service & Business Layer**: Dispatches asynchronous training jobs and coordinates analytics.
+- **Data Access Layer**: Clean repository pattern preventing ORM leaks into business logic.
+- **Database & Storage**: PostgreSQL handles relational entities while SQLite manages local MLflow experiment metrics.
+- **AI Agent Brain**: LangGraph StateGraph cyclic agent equipped with dynamic tools for relational queries and FAISS vector retrieval.
+
+---
+
+## ⚡ Asynchronous AutoML & Optuna Pipeline
+
+<p align="center">
+  <img src="docs/assets/automl_pipeline.svg" alt="AutoML Pipeline Diagram" width="100%"/>
+</p>
+
+---
+
+## 🤖 Agentic AI & StateGraph Workflow
+
+<p align="center">
+  <img src="docs/assets/agent_workflow.svg" alt="Agent Workflow Diagram" width="100%"/>
+</p>
+
 # 🧠 Software Architecture
 
 ```text
