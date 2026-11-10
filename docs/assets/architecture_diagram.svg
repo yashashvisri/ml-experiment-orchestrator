@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="abg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="520" rx="14" fill="url(#abg)"/>
+  <rect width="1000" height="520" rx="14" fill="none" stroke="#1f2937" stroke-width="1.5"/>
+
+  <text x="500" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">
+    High-Level Production Architecture
+  </text>
+  <text x="500" y="65" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">
+    Clean Architecture with Layered Decoupling, Background Workers &amp; Intelligent Agentic Loop
+  </text>
+
+  <!-- Client Layer -->
+  <g transform="translate(60, 110)">
+    <rect width="240" height="340" rx="12" fill="url(#nodeGrad)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="120" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="700" fill="#a5b4fc" text-anchor="middle">Frontend Layer</text>
+    <text x="120" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Streamlit Studio (Pure Python)</text>
+    <line x1="20" y1="65" x2="220" y2="65" stroke="#334155" stroke-width="1"/>
+    
+    <rect x="25" y="80" width="190" height="32" rx="6" fill="#1e1b4b" stroke="#4338ca"/>
+    <text x="120" y="100" font-family="sans-serif" font-size="11" font-weight="600" fill="#c7d2fe" text-anchor="middle">📁 Projects &amp; Datasets</text>
+
+    <rect x="25" y="125" width="190" height="32" rx="6" fill="#1e1b4b" stroke="#4338ca"/>
+    <text x="120" y="145" font-family="sans-serif" font-size="11" font-weight="600" fill="#c7d2fe" text-anchor="middle">🧪 AutoML &amp; Experiments</text>
+
+    <rect x="25" y="170" width="190" height="32" rx="6" fill="#1e1b4b" stroke="#4338ca"/>
+    <text x="120" y="190" font-family="sans-serif" font-size="11" font-weight="600" fill="#c7d2fe" text-anchor="middle">🤖 AI Assistant &amp; RAG</text>
+
+    <rect x="25" y="215" width="190" height="32" rx="6" fill="#1e1b4b" stroke="#4338ca"/>
+    <text x="120" y="235" font-family="sans-serif" font-size="11" font-weight="600" fill="#c7d2fe" text-anchor="middle">📑 Reports &amp; Comparison</text>
+
+    <rect x="25" y="260" width="190" height="32" rx="6" fill="#1e1b4b" stroke="#4338ca"/>
+    <text x="120" y="280" font-family="sans-serif" font-size="11" font-weight="600" fill="#c7d2fe" text-anchor="middle">📈 Dataset Profiling (EDA)</text>
+  </g>
+
+  <!-- Connectors Client -> Backend -->
+  <line x1="300" y1="280" x2="380" y2="280" stroke="#6366f1" stroke-width="2" stroke-dasharray="4,4"/>
+  <polygon points="380,280 372,275 372,285" fill="#6366f1"/>
+  <text x="340" y="270" font-family="monospace" font-size="10" fill="#818cf8" text-anchor="middle">REST / JWT</text>
+
+  <!-- Backend Gateway -->
+  <g transform="translate(380, 110)">
+    <rect width="250" height="340" rx="12" fill="url(#nodeGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="125" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="700" fill="#7dd3fc" text-anchor="middle">FastAPI Core Gateway</text>
+    <text x="125" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Layered Architecture</text>
+    <line x1="20" y1="65" x2="230" y2="65" stroke="#334155" stroke-width="1"/>
+
+    <rect x="25" y="80" width="200" height="32" rx="6" fill="#082f49" stroke="#0369a1"/>
+    <text x="125" y="100" font-family="sans-serif" font-size="11" font-weight="600" fill="#bae6fd" text-anchor="middle">🛡️ Auth &amp; Controller Layer</text>
+
+    <rect x="25" y="125" width="200" height="32" rx="6" fill="#082f49" stroke="#0369a1"/>
+    <text x="125" y="145" font-family="sans-serif" font-size="11" font-weight="600" fill="#bae6fd" text-anchor="middle">💼 Service &amp; Business Logic</text>
+
+    <rect x="25" y="170" width="200" height="32" rx="6" fill="#082f49" stroke="#0369a1"/>
+    <text x="125" y="190" font-family="sans-serif" font-size="11" font-weight="600" fill="#bae6fd" text-anchor="middle">🗄️ Repository Access Layer</text>
+
+    <rect x="25" y="215" width="200" height="32" rx="6" fill="#082f49" stroke="#0369a1"/>
+    <text x="125" y="235" font-family="sans-serif" font-size="11" font-weight="600" fill="#bae6fd" text-anchor="middle">⚙️ Async Worker Threads</text>
+
+    <rect x="25" y="260" width="200" height="32" rx="6" fill="#082f49" stroke="#0369a1"/>
+    <text x="125" y="280" font-family="sans-serif" font-size="11" font-weight="600" fill="#bae6fd" text-anchor="middle">📑 ReportLab PDF Generator</text>
+  </g>
+
+  <!-- Connectors Backend -> Services -->
+  <line x1="630" y1="200" x2="710" y2="180" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="630" y1="280" x2="710" y2="280" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="630" y1="360" x2="710" y2="380" stroke="#38bdf8" stroke-width="2"/>
+
+  <!-- Engines & Infrastructure -->
+  <g transform="translate(710, 110)">
+    <!-- Data & State -->
+    <rect x="0" y="0" width="230" height="95" rx="10" fill="url(#nodeGrad)" stroke="#3b82f6" stroke-width="1.2"/>
+    <text x="115" y="26" font-family="sans-serif" font-size="13" font-weight="700" fill="#93c5fd" text-anchor="middle">Storage &amp; Database</text>
+    <text x="115" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">🐘 PostgreSQL (Relational)</text>
+    <text x="115" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">⚡ SQLAlchemy + Alembic</text>
+
+    <!-- MLOps & AutoML -->
+    <rect x="0" y="115" width="230" height="105" rx="10" fill="url(#nodeGrad)" stroke="#a855f7" stroke-width="1.2"/>
+    <text x="115" y="141" font-family="sans-serif" font-size="13" font-weight="700" fill="#d8b4fe" text-anchor="middle">AutoML &amp; Tracking</text>
+    <text x="115" y="163" font-family="sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">🎯 Optuna Bayesian Optimization</text>
+    <text x="115" y="183" font-family="sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">🧪 MLflow Metrics &amp; Artifacts</text>
+    <text x="115" y="203" font-family="sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">🌲 XGBoost • LightGBM • RF</text>
+
+    <!-- Agentic AI & RAG -->
+    <rect x="0" y="240" width="230" height="100" rx="10" fill="url(#nodeGrad)" stroke="#10b981" stroke-width="1.2"/>
+    <text x="115" y="266" font-family="sans-serif" font-size="13" font-weight="700" fill="#6ee7b7" text-anchor="middle">Agentic AI &amp; Search</text>
+    <text x="115" y="288" font-family="sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">🤖 LangGraph State Machine</text>
+    <text x="115" y="308" font-family="sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">📚 FAISS Vector Database</text>
+    <text x="115" y="328" font-family="sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">✨ Google Gemini 1.5 Flash</text>
+  </g>
+</svg>
