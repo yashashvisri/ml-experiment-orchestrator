@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#161f30"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="320" rx="12" fill="url(#gbg)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="400" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="800" fill="#f8fafc" text-anchor="middle">
+    LangGraph Agentic State Graph Architecture
+  </text>
+  <text x="400" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">
+    Multi-Turn Chat • Tool Calling Decision Cycle • Local Knowledge Retrieval
+  </text>
+
+  <!-- Start -->
+  <circle cx="80" cy="180" r="26" fill="#10b981"/>
+  <text x="80" y="185" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">START</text>
+
+  <line x1="106" y1="180" x2="170" y2="180" stroke="#64748b" stroke-width="2"/>
+  <polygon points="170,180 162,175 162,185" fill="#64748b"/>
+
+  <!-- Agent Node -->
+  <g transform="translate(170, 130)">
+    <rect width="180" height="100" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="90" y="35" font-family="sans-serif" font-size="14" font-weight="700" fill="#c4b5fd" text-anchor="middle">🤖 Agent Node</text>
+    <text x="90" y="58" font-family="sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">Google Gemini 1.5 Flash</text>
+    <text x="90" y="78" font-family="sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Inspect State &amp; Decide Tools</text>
+  </g>
+
+  <!-- Decision / Conditional Edge -->
+  <line x1="350" y1="180" x2="430" y2="180" stroke="#8b5cf6" stroke-width="2"/>
+  <polygon points="430,180 422,175 422,185" fill="#8b5cf6"/>
+
+  <polygon points="480,140 540,180 480,220 420,180" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="480" y="177" font-family="sans-serif" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">Tool Call</text>
+  <text x="480" y="191" font-family="sans-serif" font-size="9" fill="#fde68a" text-anchor="middle">Needed?</text>
+
+  <!-- Tools Node (Top loop) -->
+  <path d="M 480 140 L 480 100 L 580 100" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+  <polygon points="580,100 572,95 572,105" fill="#f59e0b"/>
+  <text x="515" y="90" font-family="sans-serif" font-size="10" fill="#fbbf24">Yes</text>
+
+  <g transform="translate(580, 65)">
+    <rect width="180" height="70" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="90" y="25" font-family="sans-serif" font-size="12" font-weight="700" fill="#7dd3fc" text-anchor="middle">🛠️ Tool Execution</text>
+    <text x="90" y="44" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">DB Query • FAISS Search</text>
+    <text x="90" y="58" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Report Gen • EDA Profiling</text>
+  </g>
+
+  <!-- Loop back from tools to Agent -->
+  <path d="M 670 65 L 670 45 L 260 45 L 260 130" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <polygon points="260,130 255,122 265,122" fill="#38bdf8"/>
+  <text x="460" y="38" font-family="sans-serif" font-size="10" fill="#38bdf8" text-anchor="middle">Tool Results appended to Messages</text>
+
+  <!-- No -> END -->
+  <line x1="540" y1="180" x2="630" y2="180" stroke="#10b981" stroke-width="2"/>
+  <polygon points="630,180 622,175 622,185" fill="#10b981"/>
+  <text x="575" y="172" font-family="sans-serif" font-size="10" fill="#34d399">No (Final)</text>
+
+  <!-- END Node -->
+  <circle cx="670" cy="180" r="26" fill="#ef4444"/>
+  <text x="670" y="185" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">END</text>
+</svg>
