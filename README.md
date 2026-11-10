@@ -18,6 +18,27 @@
 ---
 
 
+
+---
+
+## 🎨 The 9 Integrated Platform Studios
+
+<p align="center">
+  <img src="docs/assets/studio_overview.svg" alt="9 Studio Overview" width="100%"/>
+</p>
+
+| Studio | Icon | Capabilities & Technical Implementation |
+|---|:---:|---|
+| **1. Projects** | 📁 | Multi-tenant workspace isolation with creation metadata and cascade deletion. |
+| **2. Datasets** | 📊 | Ingestion hub for CSV files with schema validation, storage metrics, and deletion controls. |
+| **3. AutoML Studio** | 🧪 | Bayesian hyperparameter optimization across **XGBoost, LightGBM, and Random Forest**. Runs non-blocking via FastAPI background tasks. |
+| **4. MLflow Runs** | 🏃 | Detailed experiment history tracking parameters, loss metrics, run duration, and artifact paths. |
+| **5. AI Assistant** | 🤖 | Conversational AI Data Scientist built on **LangGraph + Google Gemini 1.5 Flash**, equipped with database query tools. |
+| **6. Knowledge Base** | 📚 | Semantic search powered by **FAISS vector store** and PyPDF chunking for technical papers and runbooks. |
+| **7. Executive Reports** | 📑 | Automated performance audits exportable as structured Markdown or **executive PDF reports via ReportLab**. |
+| **8. Model Comparison** | ⚖️ | Interactive **Plotly** visualizer comparing trial accuracies with side-by-side parameter diffs. |
+| **9. Dataset Profiling** | 📈 | Automated EDA: missing value analysis, **Pearson correlation heatmaps**, and AI quality audits. |
+
 # 📖 Overview
 
 AI Experiment Platform is a full-stack Machine Learning Experiment Orchestration system that enables users to manage datasets, automate ML experiments, track results, compare models, and leverage AI agents to assist throughout the ML lifecycle.
