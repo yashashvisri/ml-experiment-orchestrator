@@ -39,3 +39,29 @@ The backend strictly adheres to Clean Architecture and the Repository Pattern ac
 - SQLAlchemy 2.0 ORM with PostgreSQL backend.
 - Alembic schema migrations enabling transactional data definition changes.
 - Connection pooling with scoped sessions.
+
+---
+
+## ⚡ Asynchronous AutoML & MLOps Engine
+
+![AutoML Pipeline](docs/assets/automl_pipeline.svg)
+
+### Background Task Thread-Safety
+When a model training job is triggered:
+1. The API endpoint immediately returns HTTP 200 with run metadata.
+2. Training executes asynchronously using FastAPI `BackgroundTasks`.
+3. To avoid SQLAlchemy `InterfaceError` / `ProgrammingError` caused by connection pool recycling across worker threads, the background worker initializes an independent `SessionLocal()` session in a `try...finally` block.
+4. Optuna coordinates Bayesian Tree-structured Parzen Estimator (TPE) search across model hyperparameter spaces.
+5. Every trial is recorded as a nested run inside local MLflow tracking (`sqlite:///mlruns.db`).
+
+---
+
+## 🤖 Agentic AI & RAG State Machine
+
+![Agent State Graph](docs/assets/agent_workflow.svg)
+
+### LangGraph StateGraph Execution
+The conversational AI Assistant operates as an autonomous agent with cyclical tool execution:
+- **LLM Backbone:** Google Gemini 1.5 Flash (`ChatGoogleGenerativeAI`) with zero-temperature reasoning.
+- **Agent Tools:** Direct bindings to query PostgreSQL projects, MLflow runs, compare models, and trigger automated research reports.
+- **RAG Knowledge Base:** PyPDF parses documents into 1000-character chunks with 200-character overlap. Embedded via Google Generative AI embeddings into local FAISS vector store index.
