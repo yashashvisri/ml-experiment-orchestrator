@@ -224,6 +224,30 @@ Each layer has a single responsibility:
 
 ---
 
+
+---
+
+## ⚡ 60-Second Instant Preview & Seeding
+
+Explore the platform immediately with pre-populated benchmark datasets and experiments:
+
+```bash
+# 1. Seed demo user, benchmark project, and datasets
+python scripts/run_demo.py
+
+# 2. Launch the services
+# Option A: With Docker
+docker-compose up --build
+
+# Option B: Locally
+cd backend && uvicorn app.main:app --reload &
+cd frontend && streamlit run app.py
+```
+
+**Default Demo Credentials:**
+- **Email:** `demo@orchestrator.ai`
+- **Password:** `demo1234`
+
 # 🔑 Implemented REST APIs
 
 | Method | Endpoint | Status |
