@@ -317,6 +317,17 @@ The ML Engine, AutoML, Streamlit UI, LangGraph AI Agents, RAG Search, Docker Con
 
 ---
 
+
+---
+
+## 🏆 Key Technical Accomplishments & Production Decisions
+
+- **Full-Stack Python Synergy:** Eliminates context switching by unifying high-performance asynchronous API controllers (FastAPI) with rich interactive dashboards (Streamlit).
+- **Thread-Safe Asynchronous MLOps:** Resolved database connection pool conflicts in long-running background tasks by implementing isolated thread sessions for Optuna objective evaluation.
+- **Enterprise Reporting Engine:** Integrated pure-Python ReportLab canvas rendering for pixel-perfect executive PDF summaries with color-coded benchmark tables.
+- **Production Containerization:** Multi-service `docker-compose.yml` orchestrating PostgreSQL, FastAPI, and Streamlit with healthchecks, environment security, and persistent volumes.
+- **Detailed Documentation:** Complete references in [ARCHITECTURE.md](ARCHITECTURE.md), [API_DOCS.md](API_DOCS.md), [SHOWCASE.md](SHOWCASE.md), and [DEPLOYMENT.md](DEPLOYMENT.md).
+
 # 👨‍💻 Author
 
 **Yashashvi Srivastava**
